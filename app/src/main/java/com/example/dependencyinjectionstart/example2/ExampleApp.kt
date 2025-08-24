@@ -1,0 +1,10 @@
+package com.example.dependencyinjectionstart.example2
+
+import android.app.Application
+import com.example.dependencyinjectionstart.example2.data.di.DaggerApplicationComponent
+
+class ExampleApp: Application() {
+
+    val component = DaggerApplicationComponent.factory()
+        .create(this, System.currentTimeMillis())
+}
