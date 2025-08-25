@@ -21,22 +21,19 @@ class MainActivity : AppCompatActivity() {
 
     private val component by lazy {
         (application as ExampleApp).component
+            .activityComponentFactory()
+            .create("MY_ID_1")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("MainActivity", "${component.getDatabase()}")
-        Log.d("MainActivity", "${component.getDatabase()}")
-        Log.d("MainActivity", "${component.getApiService()}")
-        Log.d("MainActivity", "${component.getApiService()}")
         viewModel.method()
         findViewById<TextView>(R.id.tv_hello).setOnClickListener {
             Intent(this, MainActivity2::class.java).apply {
                 startActivity(this)
             }
-
         }
     }
 }
